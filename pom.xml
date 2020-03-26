@@ -19,9 +19,9 @@ limitations under the License.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.github.jpmsilva.jsystemd</groupId>
+  <groupId>com.tomtom</groupId>
   <artifactId>jsystemd</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.3.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>jsystemd</name>
@@ -33,7 +33,7 @@ limitations under the License.
   <url>https://jpmsilva.github.io/jsystemd-site/</url>
 
   <issueManagement>
-    <url>https://github.com/jpmsilva/jsystemd/issues</url>
+    <url>https://github.com/tomtom-international/jsystemd/issues</url>
     <system>GitHub Issues</system>
   </issueManagement>
 
@@ -46,9 +46,9 @@ limitations under the License.
   </licenses>
 
   <scm>
-    <url>https://github.com/jpmsilva/jsystemd</url>
-    <connection>scm:git:https://github.com/jpmsilva/jsystemd.git</connection>
-    <developerConnection>scm:git:https://github.com/jpmsilva/jsystemd.git</developerConnection>
+    <url>https://github.com/tomtom-international/jsystemd</url>
+    <connection>scm:git:https://github.com/tomtom-international/jsystemd.git</connection>
+    <developerConnection>scm:git:https://github.com/tomtom-international/jsystemd.git</developerConnection>
   </scm>
 
   <developers>
@@ -58,6 +58,13 @@ limitations under the License.
       <email>joao.p.m.silva@gmail.com</email>
       <url>https://github.com/jpmsilva</url>
       <timezone>Europe/Lisbon</timezone>
+    </developer>
+    <developer>
+      <id>jackhammer2k</id>
+      <name>Christian Lorenz</name>
+      <email>Christian.Lorenz@tomtom.com</email>
+      <url>https://github.com/jackhammer2k</url>
+      <timezone>Europe/Berlin</timezone>
     </developer>
   </developers>
 
@@ -271,7 +278,7 @@ limitations under the License.
             <description>Version ${project.version}</description>
             <releaseName>${project.version}</releaseName>
             <tag>version-${project.version}</tag>
-            <repositoryId>jpmsilva/jsystemd</repositoryId>
+            <repositoryId>tomtom-international/jsystemd</repositoryId>
           </configuration>
         </plugin>
 
