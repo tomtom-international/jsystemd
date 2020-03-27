@@ -22,7 +22,7 @@ limitations under the License.
   <artifactId>jsystemd-spring-boot-starter</artifactId>
 
   <parent>
-    <groupId>com.tomtom</groupId>
+    <groupId>com.tomtom.jsystemd</groupId>
     <artifactId>jsystemd</artifactId>
     <version>1.0.3.1</version>
   </parent>
