@@ -45,9 +45,9 @@ public class PendingHealthProvider implements HealthProvider {
   }
 
   @Override
-  public boolean healthy() {
-    boolean healthy = delegate.healthy();
-    if (!healthy) {
+  public Health health() {
+    Health health = delegate.health();
+    if (!health.healthy) {
       if (unhealthySince == null) {
         unhealthySince = Instant.now();
       }
@@ -55,15 +55,15 @@ public class PendingHealthProvider implements HealthProvider {
           unhealthySince.plusMillis(pendingMs));
       if (unhealthySince.plusMillis(pendingMs).isAfter(Instant.now())) {
         // healthy until delay has expired
-        return true;
+        return Health.healthy();
       }
     } else {
       if (unhealthySince != null) {
-        LOG.debug("application healthy again (unhealthy for {}s",
+        LOG.debug("application health again (unhealthy for {}s",
             ChronoUnit.SECONDS.between(unhealthySince, Instant.now()));
         unhealthySince = null;
       }
     }
-    return healthy;
+    return health;
   }
 }

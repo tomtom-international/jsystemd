@@ -182,8 +182,8 @@ public class Systemd implements AutoCloseable {
   @SuppressWarnings("WeakerAccess")
   public void watchdog() {
     Optional<HealthProvider> healthProvider = getHealthProvider();
-    if (healthProvider.isPresent() && !healthProvider.get().healthy()) {
-      LOG.warn("suppress heartbeat to watchdog because application is unhealthy");
+    if (healthProvider.isPresent() && !healthProvider.get().health().healthy) {
+      LOG.warn("suppress heartbeat to watchdog because application is unhealthy (details={})", healthProvider.get().health().details);
       return;
     }
     LOG.debug("trigger heartbeat to watchdog");

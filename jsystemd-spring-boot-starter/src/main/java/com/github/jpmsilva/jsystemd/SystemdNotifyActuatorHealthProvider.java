@@ -15,8 +15,12 @@
  */
 package com.github.jpmsilva.jsystemd;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.actuate.health.HealthIndicator;
@@ -49,14 +53,21 @@ public class SystemdNotifyActuatorHealthProvider implements SystemdNotifyStatusP
   }
 
   @Override
-  public boolean healthy() {
-    boolean health = healthIndicators.stream().noneMatch(it -> unhealthyStatusCodes.contains(it.health().getStatus()));
-    LOG.debug("application health state={}", health);
-    return health;
+  public Health health() {
+    Collection<HealthIndicator> unhealthyIndicators = healthIndicators
+        .stream()
+        .filter(it -> unhealthyStatusCodes.contains(it.health().getStatus())).collect(Collectors.toList());
+    LOG.debug("application health state={}", unhealthyIndicators.stream().map(HealthIndicator::health).collect(Collectors.toList()));
+    boolean healthy = unhealthyIndicators.isEmpty();
+    return new Health(healthy, unhealthyIndicators.stream()
+        .map(it -> it.health().getDetails().entrySet())
+        .flatMap(Collection::stream)
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
   }
 
   @Override
   public String status() {
-    return "health status: " + (healthy() ? "healthy" : "unhealthy");
+    Health health = health();
+    return "health status: " + (health.healthy ? "healthy" : "unhealthy=" + health);
   }
 }
