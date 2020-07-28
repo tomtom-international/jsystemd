@@ -21,7 +21,7 @@ limitations under the License.
 
   <groupId>com.tomtom.jsystemd</groupId>
   <artifactId>jsystemd</artifactId>
-  <version>1.0.3.2-SNAPSHOT</version>
+  <version>1.0.3.2</version>
   <packaging>pom</packaging>
 
   <name>jsystemd</name>
